@@ -2,6 +2,7 @@
 from . import api
 import logging
 from flask import current_app
+from ihome import db,models
 
 @api.route("/index")
 def index():
