@@ -31,4 +31,13 @@ python manage.py db upgrade
 
 关于Flask使用mysql数据库:https://www.cnblogs.com/lonelyhiker/p/8486221.html    
 
+## 静态文件蓝图    
+由于自带的会显示127.0.0.1:5000/static/html/xx.html这样不好看,采用蓝图，然后自定义转换器，重新注册路由，使其路径变为127.0.0.1:5000/xx.html    
 
+### CSRF防护机制   
+Cookie和请求体中必须有值  
+csrf的验证机制:从cookie中获取csrf_token的值,从请求体获取一个csrf_token的值,然后对两个值进行校验,如果这两个值相同,则校验通过,可以进入到视图函数中执行；如果两个值不同,则校验失败,会向前端返回400错误。    
+请求中cookie的csrf_token和body的csrf_token需要我们自行进行设置,post,put,delete都会进行csrf验证     
+
+CSRF机制原理    
+同源策略:限制了不同源(IP地址和端口号)的网站不能相互操作资源
